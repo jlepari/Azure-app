@@ -340,14 +340,14 @@
 
   <!-- Resources -->
   <h2>My UI</h2>
-  <p>Here are some links to help you get started:</p>
+ 
 
   <div class="card-container">
     
     <ag-grid-angular
     style="width: 500px; height: 500px;"
     class="ag-theme-alpine"
-    [rowData]="rowData"
+    [rowData]="rowData | async"
     [columnDefs]="columnDefs"
 >
 </ag-grid-angular>
