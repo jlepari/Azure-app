@@ -343,17 +343,18 @@
   <p>Here are some links to help you get started:</p>
 
   <div class="card-container">
-    <label for="cars">Choose a Speaker:</label>
-    <br>
-
-    <select name="cars" id="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
+    
+    <ag-grid-angular
+    style="width: 500px; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+>
+</ag-grid-angular>
 
   </div>
+
+  
 
   
  
