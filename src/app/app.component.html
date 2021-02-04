@@ -322,11 +322,15 @@
   <div class="card-container">
     
     <ag-grid-angular
-    style="width: 700px; height: 500px;"
-    class="ag-theme-alpine"
-    [rowData]="rowData | async"
-    [columnDefs]="columnDefs"
->
+      style="width: 700px; height: 500px;"
+      class="ag-theme-alpine"
+      [rowData]="rowData | async"
+      [columnDefs]="columnDefs"
+      pagination     
+      paginationPageSize=9
+      >
+
+     
 </ag-grid-angular>
 
   </div>

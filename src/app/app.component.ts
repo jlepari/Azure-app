@@ -7,15 +7,7 @@ import { HttpClient } from '@angular/common/http';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title = 'my-app';
-
-    /*
-    columnDefs = [
-        { field: 'make', sortable: true, filter: true },
-        { field: 'model', sortable: true, filter: true },
-        { field: 'price', sortable: true, filter: true }
-    ];
-    */
+    title = 'my-app';    
 
    columnDefs = [
     { hide: true, field: 'speaker_id', sortable: true, filter: true },
@@ -24,14 +16,27 @@ export class AppComponent implements OnInit {
     { headerName: "Company", field: 'company', sortable: true, filter: true }
 ];
 
-gridOptions: {
-    // enables pagination in the grid
+ gridOptions = {
+    defaultColDef: {
+        width: 100,
+        suppressFilter: true
+    },
+   // columnDefs: columnDefs,
+    enableColResize: true,
+    rowModelType: 'enterprise',
+    rowGroupPanelShow: 'never',
+    enableSorting: true,
+    functionsReadOnly: true,
+    toolPanelSuppressPivotMode: true,
+    toolPanelSuppressValues: true,
+    animateRows: true,
+    debug: true,
     pagination: true,
-    // sets 10 rows per page (default is 100)
-    paginationPageSize: 5,
-
-   
-}
+    paginationAutoPageSize: true,
+    icons: {
+        groupLoading: '<img src="https://raw.githubusercontent.com/ag-grid/ag-grid-docs/master/src/javascript-grid-enterprise-model/spinner.gif" style="width:22px;height:22px;">'
+    }
+};
 
 
 
