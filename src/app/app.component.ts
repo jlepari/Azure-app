@@ -24,15 +24,25 @@ export class AppComponent implements OnInit {
     { headerName: "Company", field: 'company', sortable: true, filter: true }
 ];
 
+gridOptions: {
+    // enables pagination in the grid
+    pagination: true,
+    // sets 10 rows per page (default is 100)
+    paginationPageSize: 5,
+
+   
+}
+
+
+
+
+
     rowData: any;
 
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) { }
 
     ngOnInit() {
         //this.rowData = this.http.get('https://www.ag-grid.com/example-assets/small-row-data.json');
         this.rowData = this.http.get('https://conference-demo-001.azurewebsites.net/api/v1/speakers');
-
     }
 }
