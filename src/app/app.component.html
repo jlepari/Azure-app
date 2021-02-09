@@ -327,10 +327,10 @@
       [rowData]="rowData | async"
       [columnDefs]="columnDefs"
       pagination     
-      paginationPageSize=9
-      >
-
+      paginationPageSize=9 
+      (cellValueChanged)="onCellValueChanged($event)" 
      
+      >     
 </ag-grid-angular>
 
   </div>

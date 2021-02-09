@@ -10,36 +10,12 @@ export class AppComponent implements OnInit {
     title = 'my-app';    
 
    columnDefs = [
-    { hide: true, field: 'speaker_id', sortable: true, filter: true },
-    { headerName: "First Name", field: 'first_name', sortable: true, filter: true },
-    { headerName: "Last Name", field: 'last_name', sortable: true, filter: true },
-    { headerName: "Company", field: 'company', sortable: true, filter: true }
+    { hide: true, field: 'speaker_id' },
+    { headerName: "First Name", field: 'first_name', editable: true, sortable: true, filter: true },
+    { headerName: "Last Name", field: 'last_name',   editable: true, sortable: true, filter: true },
+    { headerName: "Company", field: 'company',   editable: true, sortable: true, filter: true }
+    
 ];
-
- gridOptions = {
-    defaultColDef: {
-        width: 100,
-        suppressFilter: true
-    },
-   // columnDefs: columnDefs,
-    enableColResize: true,
-    rowModelType: 'enterprise',
-    rowGroupPanelShow: 'never',
-    enableSorting: true,
-    functionsReadOnly: true,
-    toolPanelSuppressPivotMode: true,
-    toolPanelSuppressValues: true,
-    animateRows: true,
-    debug: true,
-    pagination: true,
-    paginationAutoPageSize: true,
-    icons: {
-        groupLoading: '<img src="https://raw.githubusercontent.com/ag-grid/ag-grid-docs/master/src/javascript-grid-enterprise-model/spinner.gif" style="width:22px;height:22px;">'
-    }
-};
-
-
-
 
 
     rowData: any;
@@ -47,7 +23,37 @@ export class AppComponent implements OnInit {
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
-        //this.rowData = this.http.get('https://www.ag-grid.com/example-assets/small-row-data.json');
+        console.log("Call to service");
+        this.loadData();
+       
+    }
+
+    onCellValueChanged(event) {
+        console.log( "onCellValueChanged");  
+        this.update(event);         
+       
+    }
+
+    loadData()
+    {
         this.rowData = this.http.get('https://conference-demo-001.azurewebsites.net/api/v1/speakers');
     }
-}
+
+    update(event)
+    {
+        console.log("in update function");
+        this.http.put("https://conference-demo-001.azurewebsites.net/api/v1/speakers/" +  event.data.speaker_id, event.data)
+        .subscribe(
+            () => console.log('Record Updated'),
+                console.error
+        );
+
+    }
+      
+       
+      
+   }
+
+      
+
+     
