@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     { hide: true, field: 'speaker_id' },
     { headerName: "First Name", field: 'first_name', editable: true, sortable: true, filter: true },
     { headerName: "Last Name", field: 'last_name',   editable: true, sortable: true, filter: true },
-    { headerName: "Company", field: 'company',   editable: true, sortable: true, filter: true }
+    { headerName: "Company", field: 'company',   sortable: true, filter: true }
     
 ];
 
